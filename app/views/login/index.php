@@ -1,4 +1,6 @@
-<?php require_once 'app/views/templates/headerPublic.php'?>
+<html>
+	
+<?php require_once 'app/views/templates/public_header.php'?>
 <main role="main" class="container">
 		<div class="page-header" id="banner">
 				<div class="row">
@@ -62,5 +64,5 @@ unset($_SESSION['account_created']);
 						}
 ?>
 <br>
-
+</html>
 <?php require_once 'app/views/templates/footer.php' ?>

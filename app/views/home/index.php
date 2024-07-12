@@ -1,18 +1,18 @@
-<?php require_once 'app/views/templates/header.php' ?>
+<?php require_once 'app/views/templates/public_header.php' ?>
+<html>
 <div class="container">
-    <div class="page-header" id="banner">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1>Hey</h1>
-                <p class="lead"> <?= date("F jS, Y"); ?></p>
-            </div>
-        </div>
-    </div>
+   <h1>Welcome to home page</h1>
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+   <a class="navbar-brand" href="#">LOGO</a>
+   <div class="collapse navbar-collapse">
+   <ul class="navbar-nav mr-auto">
+   <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+   <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+     <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+   </ul>
+   </div>
+   </nav>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <p> <a href="/logout">Click here to logout</a></p>
-        </div>
-    </div>
-
-    <?php require_once 'app/views/templates/footer.php' ?>
+   
+</div></html>
+ <?php require_once 'app/views/templates/footer.php' ?>

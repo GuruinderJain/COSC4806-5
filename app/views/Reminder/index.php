@@ -1,20 +1,18 @@
-<?php require_once 'app/views/templates/header.php' ?>
 <div class="container">
-    <div class="page-header" id="banner">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1>Reminder</h1>
-              </div>
-        </div>
-    </div>
-    <p>
+    <h1>Reminders</h1>
+    <?php if (!empty($data['reminders'])): ?>
+        <ul class="list-group">
+            <?php foreach ($data['reminders'] as $reminder): ?>
+                <li class="list-group-item">
+                    <?php echo htmlspecialchars($reminder['subject']); ?>
+                    <a href="/reminders/update/<?php echo $reminder['id']; ?>" class="btn btn-sm btn-primary">Update</a>
+                    <a href="/reminders/delete/<?php echo $reminder['id']; ?>" class="btn btn-sm btn-danger">Delete</a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php else: ?>
+        <p>No reminders found.</p>
+    <?php endif; ?>
+</div>
 
-        <?php foreach ($reminders as $reminder): ?>
-            <p>
-                <a href="/reminders/update/<?php echo $reminder['id']; ?>">Update</a>
-                <a href="/reminders/delete/<?php echo $reminder['id']; ?>">Delete</a>
-                <a href="/reminders/create/<?php echo $reminder['id']; ?>">Create</a>
-            </p>
-        <?php endforeach; ?>
-
-    <?php require_once 'app/views/templates/footer.php' ?>
+<?php require_once 'app/views/templates/footer.php'; ?>

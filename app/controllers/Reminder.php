@@ -2,17 +2,17 @@
 class Reminder extends Controller{
 public function index(){
 
-$reminder = $this->model('reminder');
+$reminderModel = $this->model('Reminder');
   
-  $list_of_reminders = $reminder->get_all_reminders();
+  $list_of_reminders = $reminderModel->get_all_reminders();
   $this->view('Reminder/index', ['reminders' => $list_of_reminders]);
   
 
 } public function create() {
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           $subject = $_POST['subject'];
-          $reminder = $this->model('Reminder');
-          $reminder->create_reminder($subject);
+          $reminderModel = $this->model('Reminder');
+          $reminderModel->create_reminder($_SESSION['user'],$subject);
           header("Location: /reminders");
       } else {
           $this->view('reminders/create');
@@ -20,21 +20,22 @@ $reminder = $this->model('reminder');
   }
 
   public function update($id) {
+         $reminderModel = $this->model('Reminder');
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           $subject = $_POST['subject'];
-          $reminder = $this->model('Reminder');
+          $reminderModel = $this->model('Reminder');
           $reminder->update_reminder($id, $subject);
           header("Location: /reminders");
       } else {
-          $reminder = $this->model('Reminder');
-          $current_reminder = $reminder->get_reminder_by_id($id);
+          $current_reminder = $reminderModel->get_reminder_by_id($id);
           $this->view('reminders/update', ['reminder' => $current_reminder]);
       }
   }
 
   public function delete($id) {
-      $reminder = $this->model('Reminder');
-      $reminder->delete_reminder($id);
+      $reminderModel = $this->model('Reminder');
+      $reminderModel->delete_reminder($id);
       header("Location: /reminders");
   }
 }
+?>
